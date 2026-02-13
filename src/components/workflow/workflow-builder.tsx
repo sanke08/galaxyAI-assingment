@@ -10,7 +10,7 @@ import {
   useReactFlow,
   type NodeTypes,
   type EdgeTypes,
-  Connection,
+  type Connection,
 } from '@xyflow/react';
 import '@xyflow/react/dist/style.css';
 
@@ -393,8 +393,9 @@ function BuilderInner() {
           onDrop={onDrop}
           onDragOver={onDragOver}
           nodeTypes={workflowNodeTypes as NodeTypes}
+          // @ts-ignore
           isValidConnection={React.useCallback(
-            (connection) => checkIsValidConnection(connection, nodes, edges),
+            (connection:Connection) => checkIsValidConnection(connection, nodes, edges),
             [nodes, edges]
           )}
           connectionLineComponent={CustomConnectionLine}
@@ -417,7 +418,7 @@ function BuilderInner() {
           {/* Right Panel (Credits, Save, Run, History) */}
           <RightPanel
             isSaving={isSaving}
-            isDirty={isDirty}
+            isDirty={isDirty} 
             onSave={saveWorkflow}
             onRunAll={handleRunAll}
             onRunSelected={handleRunSelected}
@@ -458,8 +459,8 @@ function BuilderInner() {
           <Background
             variant={BackgroundVariant.Dots}
             gap={24}
-            size={1.2}
-            color="hsl(var(--muted-foreground))"
+            size={1.2} 
+            color="gray"
           />
         </ReactFlow>
 

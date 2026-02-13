@@ -240,8 +240,6 @@ export function CropImageNode({ id, data, selected }: NodeProps<CropImageFlowNod
 
             const triggerResult: TriggerTaskResponse = await triggerResponse.json();
 
-            console.log({triggerResult})
-
             if (!triggerResult.success || !triggerResult.runId) {
                 throw new Error(triggerResult.error || 'Failed to trigger crop task');
             }

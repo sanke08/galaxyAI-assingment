@@ -118,7 +118,7 @@ export function BottomToolbar({
   return (
     <TooltipProvider delayDuration={300}>
       <div className="pointer-events-none absolute bottom-6 left-1/2 -translate-x-1/2">
-        <div className="pointer-events-auto flex items-center gap-1 rounded-md border border-border/60 bg-card/80 backdrop-blur px-2 py-2 shadow-lg">
+        <div className="pointer-events-auto flex items-center border border-border/60 bg-muted py-1 px-2 rounded-lg">
           {/* Select tool */}
           <button
             type="button"
@@ -179,10 +179,10 @@ export function BottomToolbar({
             <Redo2 className="h-4 w-4" />
           </button>
 
-          <div className="mx-1 h-6 w-px bg-border/60" />
+          {/* <div className="mx-1 h-6 w-px bg-border/60" /> */}
 
           {/* Reset All Nodes */}
-          <Tooltip>
+          {/* <Tooltip>
             <TooltipTrigger asChild>
               <button
                 type="button"
@@ -200,7 +200,7 @@ export function BottomToolbar({
             <TooltipContent side="top">
               <p>Reset All Nodes</p>
             </TooltipContent>
-          </Tooltip>
+          </Tooltip> */}
 
           <div className="mx-1 h-6 w-px bg-border/60" />
 

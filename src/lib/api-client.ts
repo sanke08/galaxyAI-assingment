@@ -9,14 +9,14 @@ export interface Workflow {
   name: string;
   thumbnail?: string | null;
   folderId?: string | null;
-  createdAt: Date | string;
+  createdAt: Date | string; 
   updatedAt: Date | string;
 }
 
 export interface Folder {
   id: string;
   name: string;
-  parentId?: string | null;
+  parentId?: string | null; 
   fileCount?: number;
   createdAt: Date | string;
   updatedAt: Date | string;

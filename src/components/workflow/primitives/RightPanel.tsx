@@ -4,7 +4,7 @@ import * as React from 'react';
 import { Panel } from '@xyflow/react';
 import { PiShareLight } from 'react-icons/pi';
 import { TbAsterisk } from 'react-icons/tb';
-import { Check, Clock, Download, Loader2, Play, Save, Upload } from 'lucide-react';
+import { Check, ChevronRight, Clock, Download, Loader2, Play, Save, Upload } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useWorkflowStore } from '@/stores/workflowStore';
@@ -65,9 +65,9 @@ export function RightPanel({
     if (file) {
       const success = await importWorkflow(file);
       if (success) {
-        console.log('Workflow imported successfully');
+        // console.log('Workflow imported successfully');
       } else {
-        console.error('Failed to import workflow');
+        // console.error('Failed to import workflow');
       }
       // Reset file input
       if (fileInputRef.current) {
@@ -96,7 +96,7 @@ export function RightPanel({
           marginRight: isHistoryOpen ? 404 : 24, // 380px history panel + 24px margin
         }}
       >
-        <div className="w-[280px] rounded-md border border-border/60 bg-card/80 backdrop-blur p-3 shadow-lg">
+        <div className="w-[280px] rounded-md border border-border/60 bg-muted backdrop-blur p-3 shadow-lg">
           {/* Top row: Credits + Share */}
           <div className="flex items-center justify-between">
             <div className="text-[14px] flex items-center gap-1 font-medium text-foreground">
@@ -132,53 +132,35 @@ export function RightPanel({
                 </span>
               )}
             </div>
-            <button
-              type="button"
-              onClick={onSave}
-              disabled={isSaving || !isDirty}
-              className={cn(
-                'flex items-center gap-1 text-xs px-2 py-1 rounded-md transition-colors',
-                isDirty && !isSaving
-                  ? 'bg-purple-500/20 text-purple-300 hover:bg-purple-500/30'
-                  : 'text-foreground/40 cursor-not-allowed'
-              )}
-              title="Ctrl+S"
-            >
-              <Save className="h-3 w-3" />
-              <span>Save</span>
-              <span className="text-[10px] text-foreground/40 ml-1">⌘S</span>
-            </button>
+             {/* History Toggle */}
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <button
+                  type="button"
+                  aria-label="Workflow History"
+                  aria-pressed={isHistoryOpen}
+                  onClick={onToggleHistory}
+                  className={cn(
+                    'h-9 text-sm rounded-md transition-colors flex gap-2 items-center',
+                    isHistoryOpen
+                      ? 'bg-purple-600 text-white'
+                      : 'text-foreground/80 hover:bg-muted/40'
+                  )}
+                >
+                  Tasks
+                  <ChevronRight size={14}/>
+                </button>
+              </TooltipTrigger>
+              <TooltipContent side="bottom">
+                <p>{isHistoryOpen ? 'Close History' : 'Workflow History'}</p>
+              </TooltipContent>
+            </Tooltip>
           </div>
 
-          {/* Import/Export Buttons */}
-          <div className="mt-2 flex items-center gap-2">
-            <button
-              type="button"
-              onClick={handleImportClick}
-              className="flex-1 flex items-center justify-center gap-1.5 text-xs px-2 py-1.5 rounded-md bg-muted/50 text-foreground/70 hover:bg-muted hover:text-foreground transition-colors"
-              title="Import workflow from JSON"
-            >
-              <Upload className="h-3 w-3" />
-              <span>Import</span>
-            </button>
-            <button
-              type="button"
-              onClick={exportWorkflow}
-              className="flex-1 flex items-center justify-center gap-1.5 text-xs px-2 py-1.5 rounded-md bg-muted/50 text-foreground/70 hover:bg-muted hover:text-foreground transition-colors"
-              title="Export workflow as JSON"
-            >
-              <Download className="h-3 w-3" />
-              <span>Export</span>
-            </button>
-          </div>
 
-          {/* Divider */}
-          <div className="my-3 h-px bg-border/60" />
 
-          {/* Run Controls + History */}
           <div className="flex items-center gap-2">
-            {/* Run All */}
-            {onRunAll && (
+            {/* {onRunAll && (
               <Tooltip>
                 <TooltipTrigger asChild>
                   <button
@@ -203,7 +185,6 @@ export function RightPanel({
               </Tooltip>
             )}
 
-            {/* Run Selected */}
             {onRunSelected && hasSelectedNodes && (
               <Tooltip>
                 <TooltipTrigger asChild>
@@ -221,30 +202,9 @@ export function RightPanel({
                   <p>Run selected nodes</p>
                 </TooltipContent>
               </Tooltip>
-            )}
+            )} */}
 
-            {/* History Toggle */}
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <button
-                  type="button"
-                  aria-label="Workflow History"
-                  aria-pressed={isHistoryOpen}
-                  onClick={onToggleHistory}
-                  className={cn(
-                    'grid h-9 w-9 place-items-center rounded-md transition-colors',
-                    isHistoryOpen
-                      ? 'bg-purple-600 text-white'
-                      : 'text-foreground/80 hover:bg-muted/40'
-                  )}
-                >
-                  <Clock className="h-4 w-4" />
-                </button>
-              </TooltipTrigger>
-              <TooltipContent side="bottom">
-                <p>{isHistoryOpen ? 'Close History' : 'Workflow History'}</p>
-              </TooltipContent>
-            </Tooltip>
+         
           </div>
         </div>
       </Panel>

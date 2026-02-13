@@ -4,7 +4,6 @@ import { prisma } from "@/lib/db";
  
 export async function GET(req: Request) {
     const user = await getDbUser();
-
     if (!user) {
         return new NextResponse("Unauthorized", { status: 401 });
     }

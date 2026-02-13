@@ -81,7 +81,7 @@ export function LeftPanel({
         data-testid="left_tool_menu"
         style={{
           height: '100%',
-          width: 56,
+          width: 52,
           left: 0,
           top: 0,
           margin: 0,
@@ -90,7 +90,7 @@ export function LeftPanel({
       >
         <div
           id="main-toolbar-container"
-          className="flex h-full flex-col border-r border-border bg-card"
+          className="flex h-full flex-col border-r border-border bg-muted"
         >
           <Link href="/dashboard" className="flex items-center justify-center gap-2 px-3 py-3 cursor-pointer">
             <img
@@ -179,9 +179,9 @@ export function LeftPanel({
         data-testid="left-panel-panel"
         style={{
           height: '100%',
-          width: isOpen ? 260 : 0,
+          width: isOpen ? 240 : 0,
           top: 0,
-          left: 56,
+          left: 52,
           margin: 0,
           opacity: isOpen ? 1 : 0,
           transition: 'width 0.15s, opacity 0.2s ease-in-out',
@@ -189,7 +189,7 @@ export function LeftPanel({
           overflow: 'hidden',
         }}
       >
-        <div className="flex h-full w-full flex-col border-r border-border bg-card">
+        <div className="flex h-full w-full flex-col border-r border-border bg-muted">
           {/* Editable Workflow title */}
           <div className="flex items-center border-b border-border px-4 py-4">
             {isEditingName ? (
@@ -216,7 +216,7 @@ export function LeftPanel({
 
           {/* Search */}
           <div className="border-b border-border px-4 py-3">
-            <div className="flex h-10 items-center gap-2 rounded-md border border-border bg-background px-3">
+            <div className="flex h-10 items-center gap-2 rounded-md border border-border bg-muted px-3">
               <Search className="h-4 w-4 text-foreground/60" />
               <input
                 value={searchQuery}
@@ -245,7 +245,7 @@ export function LeftPanel({
               <div className="grid grid-cols-2 gap-3">
                 {filteredNodeTypes.map((node) => (
                   <QuickAccessNodeButton
-                    key={node.nodeType}
+                    key={node.nodeType} 
                     title={node.title}
                     icon={node.icon}
                     nodeType={node.nodeType}

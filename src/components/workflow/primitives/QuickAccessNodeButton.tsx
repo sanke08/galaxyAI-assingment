@@ -26,8 +26,8 @@ export function QuickAccessNodeButton({
         e.dataTransfer.effectAllowed = 'move';
       }}
       className={cn(
-        'flex h-24 flex-col items-center justify-center gap-2 rounded-md border border-border/60',
-        'bg-card/40 text-foreground/90 hover:bg-purple-500/10 hover:border-purple-500/50',
+        'flex h-24 flex-col items-center justify-center gap-2 rounded-md border border-border',
+        'text-foreground/90 hover:bg-purple-500/10 hover:border-purple-500/50',
         'transition-all cursor-grab active:cursor-grabbing'
       )}
     >

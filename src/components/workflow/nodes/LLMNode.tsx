@@ -123,7 +123,7 @@ export function LLMNode({ id, data, selected }: NodeProps<LLMFlowNode>) {
 
     try {
       const inputs = getConnectedInputs(id);
-      console.log('Inputs:', inputs);
+      // console.log('Inputs:', inputs);
       // return
       
       const systemPrompt = inputs.systemPrompt || data.systemPrompt;
