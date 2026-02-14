@@ -39,6 +39,8 @@ import {
   PlaySquare,
   Menu,
   LayoutGrid,
+  FolderIcon,
+  
 } from "lucide-react";
 
 // Import modular dashboard components
@@ -482,7 +484,6 @@ const DashboardClient = () => {
                     <SidebarNavItem
                       label="Apps"
                       icon={<PlaySquare className="h-5 w-5" />}
-                      // icon={<img src="/icons/apps.svg" alt="apps" className="h-5 w-5 invert" />}
                     />
                   </div>
                 </div>
@@ -532,7 +533,7 @@ const DashboardClient = () => {
 
             <main className="pt-6">
               {/* Showcase section */}
-              <section className="rounded-md border border-border bg-muted p-5">
+              <section className="rounded-md border  bg-muted/40 p-5">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <p className="text-xs font-medium bg-gray-600/30 px-2 py-1 rounded">
@@ -625,7 +626,7 @@ const DashboardClient = () => {
                         placeholder="Search"
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
-                        className="h-10 rounded-md border-border bg-muted dark:bg-muted pl-10 text-sm"
+                        className="h-10 rounded-md border-border bg-muted/40 dark:bg-muted/40 pl-10 text-sm"
                       />
                     </div>
 
@@ -665,11 +666,7 @@ const DashboardClient = () => {
                     filteredWorkflows.length === 0 ? (
                       <div className="flex flex-col items-center justify-center py-20 text-center">
                         <div className="mb-4 rounded-lg border border-border bg-card/40 p-4">
-                          <img
-                            src="/icons/folder.svg"
-                            alt="folder"
-                            className="h-12 w-12 opacity-60 invert"
-                          />
+                         <FolderIcon />
                         </div>
                         <h3 className="text-lg font-medium text-foreground">
                           This folder is empty
